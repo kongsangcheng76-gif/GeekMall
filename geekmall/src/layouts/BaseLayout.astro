@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { title, description = '極客商城 — 你的科技購物首選，匯聚 ASUS、GIGABYTE、Apple、MSI 等頂尖品牌。' } = Astro.props;
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <!DOCTYPE html>
@@ -34,7 +34,13 @@ const base = import.meta.env.BASE_URL;
   </script>
   <!-- GA4 Events + Cart System -->
   <script is:inline src={`${base}ga4-cart.js`}></script>
-  <script is:inline>window.__BASE_URL__ = `${base}`;</script>
+  <meta name="base-path" content={base} />
+  <script is:inline>
+  (function(){
+    var m = document.querySelector('meta[name="base-path"]');
+    window.__BASE_URL__ = m ? m.content : '/';
+  })();
+  </script>
 </head>
 <body>
   <Navbar />

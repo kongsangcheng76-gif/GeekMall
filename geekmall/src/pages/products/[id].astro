@@ -10,7 +10,7 @@ export function getStaticPaths() {
 }
 
 const { product } = Astro.props;
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const productJson = { id: product.id, name: product.name, brand: product.brand, category: product.category, price: product.price, image: product.image };
 
 const related = products

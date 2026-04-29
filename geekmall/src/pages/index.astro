@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import products from '../data/products.json';
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const featuredProducts = products.slice(0, 8);
 const dealProducts = products.filter(p => p.badge === '暢銷' || p.badge === '性價比王' || p.badge === '入門' || p.badge === '輕量' || p.badge === '主流').slice(0, 4);
 const brands = [...new Set(products.map(p => p.brand))];
