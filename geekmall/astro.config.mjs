@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   site: 'https://kongsangcheng76-gif.github.io',
-  base: '/geekmall',
+  base: '/GeekMall',
   output: 'static',
   build: {
     assets: 'assets',
