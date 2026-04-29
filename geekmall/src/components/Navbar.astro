@@ -1,28 +1,30 @@
 ---
+const base = import.meta.env.BASE_URL;
+
 const navLinks = [
-  { label: '首頁', href: '/' },
-  { label: '全部商品', href: '/products/' },
-  { label: '關於我們', href: '/about/' },
-  { label: '聯絡我們', href: '/contact/' },
+  { label: '首頁', href: base },
+  { label: '全部商品', href: `${base}products/` },
+  { label: '關於我們', href: `${base}about/` },
+  { label: '聯絡我們', href: `${base}contact/` },
 ];
 
 const categories = [
-  { label: '筆記型電腦', href: '/products/?category=laptops' },
-  { label: '手機', href: '/products/?category=smartphones' },
-  { label: '平板電腦', href: '/products/?category=tablets' },
-  { label: '顯示卡', href: '/products/?category=graphics-cards' },
-  { label: '主機板', href: '/products/?category=motherboards' },
-  { label: '顯示器', href: '/products/?category=monitors' },
-  { label: '耳機/音頻', href: '/products/?category=headphones' },
-  { label: '智慧手錶', href: '/products/?category=smartwatches' },
-  { label: '鍵鼠周邊', href: '/products/?category=keyboards-mice' },
-  { label: '網絡設備', href: '/products/?category=networking' },
+  { label: '筆記型電腦', href: `${base}products/?category=laptops` },
+  { label: '手機', href: `${base}products/?category=smartphones` },
+  { label: '平板電腦', href: `${base}products/?category=tablets` },
+  { label: '顯示卡', href: `${base}products/?category=graphics-cards` },
+  { label: '主機板', href: `${base}products/?category=motherboards` },
+  { label: '顯示器', href: `${base}products/?category=monitors` },
+  { label: '耳機/音頻', href: `${base}products/?category=headphones` },
+  { label: '智慧手錶', href: `${base}products/?category=smartwatches` },
+  { label: '鍵鼠周邊', href: `${base}products/?category=keyboards-mice` },
+  { label: '網絡設備', href: `${base}products/?category=networking` },
 ];
 ---
 
 <nav class="navbar" id="navbar">
   <div class="navbar-inner container">
-    <a href="/" class="navbar-brand">
+    <a href={base} class="navbar-brand">
       <i class="fas fa-bolt"></i>
       <span>極客商城</span>
     </a>
@@ -50,7 +52,7 @@ const categories = [
       <button class="search-toggle" id="searchToggle" aria-label="搜尋">
         <i class="fas fa-search"></i>
       </button>
-      <a href="/cart/" class="cart-btn" aria-label="購物車">
+      <a href={`${base}cart/`} class="cart-btn" aria-label="購物車">
         <i class="fas fa-cart-shopping"></i>
         <span class="cart-count">0</span>
       </a>
@@ -350,7 +352,7 @@ const categories = [
     if (e.key === 'Enter' && searchInput.value.trim()) {
       const term = searchInput.value.trim();
       if (typeof GA4 !== 'undefined') GA4.search(term);
-      window.location.href = '/products/?search=' + encodeURIComponent(term);
+      window.location.href = window.__BASE_URL__ + 'products/?search=' + encodeURIComponent(term);
     }
   });
 </script>

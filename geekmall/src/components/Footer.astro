@@ -1,18 +1,19 @@
 ---
 const currentYear = new Date().getFullYear();
+const base = import.meta.env.BASE_URL;
 
 const quickLinks = [
-  { label: '首頁', href: '/' },
-  { label: '全部商品', href: '/products/' },
-  { label: '關於我們', href: '/about/' },
-  { label: '聯絡我們', href: '/contact/' },
+  { label: '首頁', href: base },
+  { label: '全部商品', href: `${base}products/` },
+  { label: '關於我們', href: `${base}about/` },
+  { label: '聯絡我們', href: `${base}contact/` },
 ];
 
 const categories = [
-  { label: '筆記型電腦', href: '/products/?category=laptops' },
-  { label: '手機', href: '/products/?category=smartphones' },
-  { label: '顯示卡', href: '/products/?category=graphics-cards' },
-  { label: '顯示器', href: '/products/?category=monitors' },
+  { label: '筆記型電腦', href: `${base}products/?category=laptops` },
+  { label: '手機', href: `${base}products/?category=smartphones` },
+  { label: '顯示卡', href: `${base}products/?category=graphics-cards` },
+  { label: '顯示器', href: `${base}products/?category=monitors` },
 ];
 
 const brands = ['ASUS', 'GIGABYTE', 'Apple', 'MSI'];
@@ -22,7 +23,7 @@ const brands = ['ASUS', 'GIGABYTE', 'Apple', 'MSI'];
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="/" class="footer-logo">
+        <a href={base} class="footer-logo">
           <i class="fas fa-bolt"></i>
           <span>極客商城</span>
         </a>
@@ -52,7 +53,7 @@ const brands = ['ASUS', 'GIGABYTE', 'Apple', 'MSI'];
       <div class="footer-col">
         <h4>合作品牌</h4>
         {brands.map(brand => (
-          <a href={`/products/?brand=${brand}`}>{brand}</a>
+          <a href={`${base}products/?brand=${brand}`}>{brand}</a>
         ))}
       </div>
     </div>

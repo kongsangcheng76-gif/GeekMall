@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="購物車">
@@ -15,7 +16,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <i class="fas fa-cart-shopping"></i>
         <h2>購物車是空的</h2>
         <p>快去選購心儀的商品吧！</p>
-        <a href="/products/" class="btn btn-accent">瀏覽商品</a>
+        <a href={`${base}products/`} class="btn btn-accent">瀏覽商品</a>
       </div>
     </div>
   </div>
@@ -139,7 +140,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     html += '<div class="cart-summary">' +
       '<div class="cart-total">合計：<span>$' + total.toFixed(0) + ' USD</span></div>' +
       '<div class="cart-actions">' +
-        '<a href="/products/" class="btn btn-secondary btn-lg"><i class="fas fa-arrow-left"></i> 繼續購物</a>' +
+        '<a href="' + window.__BASE_URL__ + 'products/" class="btn btn-secondary btn-lg"><i class="fas fa-arrow-left"></i> 繼續購物</a>' +
         '<button class="btn btn-accent btn-lg" onclick="beginCheckout()"><i class="fas fa-lock"></i> 安全快速結帳</button>' +
       '</div>' +
     '</div>';
@@ -166,7 +167,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     if (window.GA4) {
       GA4.beginCheckout(items, total);
     }
-    window.location.href = '/checkout/';
+    window.location.href = window.__BASE_URL__ + 'checkout/';
   }
 
   document.addEventListener('DOMContentLoaded', renderCart);

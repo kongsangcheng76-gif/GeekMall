@@ -2,22 +2,23 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import products from '../data/products.json';
 
+const base = import.meta.env.BASE_URL;
 const featuredProducts = products.slice(0, 8);
 const dealProducts = products.filter(p => p.badge === '暢銷' || p.badge === '性價比王' || p.badge === '入門' || p.badge === '輕量' || p.badge === '主流').slice(0, 4);
 const brands = [...new Set(products.map(p => p.brand))];
 const featuredJson = featuredProducts.map(p => ({ id: p.id, name: p.name, brand: p.brand, category: p.category, price: p.price }));
 
 const categories = [
-  { label: '筆記型電腦', icon: 'fa-laptop', href: '/products/?category=laptops', color: '#3b82f6' },
-  { label: '手機', icon: 'fa-mobile-screen', href: '/products/?category=smartphones', color: '#8b5cf6' },
-  { label: '平板電腦', icon: 'fa-tablet-screen-button', href: '/products/?category=tablets', color: '#06b6d4' },
-  { label: '顯示卡', icon: 'fa-microchip', href: '/products/?category=graphics-cards', color: '#ef4444' },
-  { label: '主機板', icon: 'fa-server', href: '/products/?category=motherboards', color: '#f59e0b' },
-  { label: '顯示器', icon: 'fa-desktop', href: '/products/?category=monitors', color: '#10b981' },
-  { label: '耳機/音頻', icon: 'fa-headphones', href: '/products/?category=headphones', color: '#ec4899' },
-  { label: '智慧手錶', icon: 'fa-clock', href: '/products/?category=smartwatches', color: '#f97316' },
-  { label: '鍵鼠周邊', icon: 'fa-keyboard', href: '/products/?category=keyboards-mice', color: '#6366f1' },
-  { label: '網絡設備', icon: 'fa-wifi', href: '/products/?category=networking', color: '#14b8a6' },
+  { label: '筆記型電腦', icon: 'fa-laptop', href: `${base}products/?category=laptops`, color: '#3b82f6' },
+  { label: '手機', icon: 'fa-mobile-screen', href: `${base}products/?category=smartphones`, color: '#8b5cf6' },
+  { label: '平板電腦', icon: 'fa-tablet-screen-button', href: `${base}products/?category=tablets`, color: '#06b6d4' },
+  { label: '顯示卡', icon: 'fa-microchip', href: `${base}products/?category=graphics-cards`, color: '#ef4444' },
+  { label: '主機板', icon: 'fa-server', href: `${base}products/?category=motherboards`, color: '#f59e0b' },
+  { label: '顯示器', icon: 'fa-desktop', href: `${base}products/?category=monitors`, color: '#10b981' },
+  { label: '耳機/音頻', icon: 'fa-headphones', href: `${base}products/?category=headphones`, color: '#ec4899' },
+  { label: '智慧手錶', icon: 'fa-clock', href: `${base}products/?category=smartwatches`, color: '#f97316' },
+  { label: '鍵鼠周邊', icon: 'fa-keyboard', href: `${base}products/?category=keyboards-mice`, color: '#6366f1' },
+  { label: '網絡設備', icon: 'fa-wifi', href: `${base}products/?category=networking`, color: '#14b8a6' },
 ];
 ---
 
@@ -34,7 +35,7 @@ const categories = [
             <h2>ROG Strix G16</h2>
             <p>Intel Core i9 + RTX 5070 Ti｜16 吋 240Hz Nebula HDR</p>
             <div class="slide-price"><span class="old-price">$2,199</span> <span class="now-price">$1,899</span> <small>USD</small></div>
-            <a href="/products/1/" class="btn btn-accent"><i class="fas fa-cart-shopping"></i> 立即選購</a>
+            <a href={`${base}products/1/`} class="btn btn-accent"><i class="fas fa-cart-shopping"></i> 立即選購</a>
           </div>
           <div class="slide-image">
             <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&h=400&fit=crop" alt="ROG Strix G16" />
@@ -47,7 +48,7 @@ const categories = [
             <h2>ROG Strix RTX 5090</h2>
             <p>NVIDIA Blackwell｜32GB GDDR7｜384-bit｜三風扇散熱</p>
             <div class="slide-price"><span class="now-price">$2,299</span> <small>USD</small></div>
-            <a href="/products/17/" class="btn btn-accent"><i class="fas fa-bolt"></i> 查看詳情</a>
+            <a href={`${base}products/17/`} class="btn btn-accent"><i class="fas fa-bolt"></i> 查看詳情</a>
           </div>
           <div class="slide-image">
             <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=500&h=400&fit=crop" alt="RTX 5090" />
@@ -60,7 +61,7 @@ const categories = [
             <h2>iPhone 16 Pro Max</h2>
             <p>A18 Pro 晶片｜6.9 吋 Super Retina XDR｜鈦金屬設計</p>
             <div class="slide-price"><span class="now-price">$1,199</span> <small>USD</small></div>
-            <a href="/products/9/" class="btn btn-accent"><i class="fas fa-apple"></i> 探索更多</a>
+            <a href={`${base}products/9/`} class="btn btn-accent"><i class="fas fa-apple"></i> 探索更多</a>
           </div>
           <div class="slide-image">
             <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=500&h=400&fit=crop" alt="iPhone 16 Pro Max" />
@@ -102,7 +103,7 @@ const categories = [
       </div>
       <div class="deals-grid">
         {dealProducts.map(product => (
-          <a href={`/products/${product.id}/`} class="deal-card">
+          <a href={`${base}products/${product.id}/`} class="deal-card">
             <div class="deal-img">
               <img src={product.image} alt={product.name} loading="lazy" />
               <span class="badge deal-badge">限時優惠</span>
@@ -126,7 +127,7 @@ const categories = [
       <h2 class="section-title">合作品牌</h2>
       <div class="brands-grid reveal-stagger">
         {brands.map(brand => (
-          <a href={`/products/?brand=${brand}`} class="brand-card">
+          <a href={`${base}products/?brand=${brand}`} class="brand-card">
             <span class="brand-name">{brand}</span>
           </a>
         ))}
@@ -138,7 +139,7 @@ const categories = [
       <h2 class="section-title">精選商品</h2>
       <div class="products-grid">
         {featuredProducts.map(product => (
-          <a href={`/products/${product.id}/`} class="product-card ga4-product-card"
+          <a href={`${base}products/${product.id}/`} class="product-card ga4-product-card"
              data-product-id={product.id} data-product-name={product.name}
              data-product-brand={product.brand} data-product-category={product.category}
              data-product-price={product.price}>
@@ -161,7 +162,7 @@ const categories = [
         ))}
       </div>
       <div class="view-all">
-        <a href="/products/" class="btn btn-secondary">查看全部 {products.length} 件商品 <i class="fas fa-arrow-right"></i></a>
+        <a href={`${base}products/`} class="btn btn-secondary">查看全部 {products.length} 件商品 <i class="fas fa-arrow-right"></i></a>
       </div>
     </section>
   </div>
