@@ -1,0 +1,162 @@
+---
+const currentYear = new Date().getFullYear();
+
+const quickLinks = [
+  { label: '首頁', href: '/' },
+  { label: '全部商品', href: '/products/' },
+  { label: '關於我們', href: '/about/' },
+  { label: '聯絡我們', href: '/contact/' },
+];
+
+const categories = [
+  { label: '筆記型電腦', href: '/products/?category=laptops' },
+  { label: '手機', href: '/products/?category=smartphones' },
+  { label: '顯示卡', href: '/products/?category=graphics-cards' },
+  { label: '顯示器', href: '/products/?category=monitors' },
+];
+
+const brands = ['ASUS', 'GIGABYTE', 'Apple', 'MSI'];
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">
+          <i class="fas fa-bolt"></i>
+          <span>極客商城</span>
+        </a>
+        <p class="footer-tagline">你的科技購物首選，匯聚全球頂尖電子品牌。</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>快速連結</h4>
+        {quickLinks.map(link => (
+          <a href={link.href}>{link.label}</a>
+        ))}
+      </div>
+
+      <div class="footer-col">
+        <h4>商品分類</h4>
+        {categories.map(cat => (
+          <a href={cat.href}>{cat.label}</a>
+        ))}
+      </div>
+
+      <div class="footer-col">
+        <h4>合作品牌</h4>
+        {brands.map(brand => (
+          <a href={`/products/?brand=${brand}`}>{brand}</a>
+        ))}
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {currentYear} 極客商城 GeekMall. All rights reserved.</p>
+      <p class="footer-note">
+        <i class="fas fa-shield-alt"></i> 安全結帳 · 全球免運 · 24/7 客服
+        <span class="divider">|</span>
+        <i class="fas fa-chart-line"></i> GA4 數據即時追蹤
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-primary);
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 4rem;
+    padding: 3rem 0 0;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 0.75rem;
+  }
+  .footer-logo i { color: var(--color-accent); }
+
+  .footer-tagline {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    max-width: 280px;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 0.75rem;
+  }
+  .footer-social a {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    font-size: 0.9rem;
+    color: white;
+    transition: all 0.2s ease;
+  }
+  .footer-social a:hover { background: var(--color-accent); transform: translateY(-2px); }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .footer-col h4 {
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+  .footer-col a {
+    font-size: 0.85rem;
+    transition: color 0.2s ease;
+  }
+  .footer-col a:hover { color: var(--color-accent); }
+
+  .footer-bottom {
+    padding: 1.5rem 0;
+    text-align: center;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .footer-note { margin-top: 0.5rem; }
+  .divider { margin: 0 0.5rem; opacity: 0.3; }
+
+  @media (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .footer-brand { grid-column: 1 / -1; }
+  }
+
+  @media (max-width: 480px) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>極客商城 | HKIIT旗艦店</title>
+    <!-- GA4 全域標籤 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-65SJRPQ394"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-65SJRPQ394');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(145deg, #f8fafc 0%, #eef2f8 100%);
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+            color: #0f172a;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .hero { text-align: center; margin-bottom: 3rem; }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0f172a, #2d3e5a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .hero h1 i { background: none; color: #f97316; font-size: 2.4rem; }
+        .hero .tagline { font-size: 1.2rem; color: #475569; border-top: 2px solid #cbd5e1; display: inline-block; padding-top: 0.8rem; font-weight: 500; }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0 3rem;
+        }
+        .product-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 30px 40px -12px rgba(0, 0, 0, 0.2); background: white; border-color: #f97316; }
+        .product-img { background: linear-gradient(125deg, #f1f5f9, #e2e8f0); padding: 2rem 1rem; text-align: center; font-size: 4rem; color: #2c3e50; border-bottom: 1px solid #eef2f8; }
+        .product-info { padding: 1.5rem 1.5rem 2rem; }
+        .product-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #0f172a; display: flex; align-items: center; justify-content: space-between; }
+        .badge { background: #eef2ff; font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.7rem; border-radius: 30px; color: #2563eb; }
+        .product-desc { font-size: 0.9rem; color: #475569; margin: 0.75rem 0 1rem; line-height: 1.4; }
+        .price { font-size: 1.8rem; font-weight: 800; color: #f97316; margin: 1rem 0 1.5rem; display: flex; align-items: baseline; gap: 5px; }
+        .price small { font-size: 1rem; font-weight: 500; color: #5b6e8c; }
+        .btn-group { display: flex; gap: 12px; }
+        .detail-btn, .buy-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            flex: 1;
+        }
+        .detail-btn {
+            background: #f1f5f9;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+        }
+        .detail-btn:hover { background: #e2e8f0; transform: translateY(-2px); }
+        .buy-btn {
+            background: #1e293b;
+            color: white;
+            border: none;
+        }
+        .buy-btn:hover { background: #f97316; transform: scale(1.02); box-shadow: 0 8px 18px rgba(249, 115, 22, 0.3); }
+        .footer-note { text-align: center; margin-top: 3rem; font-size: 0.85rem; color: #687a8f; border-top: 1px solid #dce3ec; padding-top: 2rem; }
+
+        /* 彈窗樣式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 2rem;
+            width: 90%;
+            max-width: 550px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            animation: modalFadeIn 0.3s;
+            overflow: hidden;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .modal-header {
+            background: linear-gradient(135deg, #1e293b, #2d3e5a);
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .modal-header h3 { font-size: 1.5rem; margin: 0; }
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .modal-body { padding: 2rem; }
+        .spec-item { margin-bottom: 1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; }
+        .spec-label { font-weight: 700; color: #0f172a; width: 100px; display: inline-block; }
+        .spec-value { color: #475569; }
+        @media (max-width: 640px) { body { padding: 1rem; } .hero h1 { font-size: 2rem; } .btn-group { flex-direction: column; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1><i class="fas fa-bolt"></i> 極客商城</h1>
+        <div class="tagline">⚡ 未來科技・即刻擁有 ⚡</div>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+        <!-- 產品卡片會由 JavaScript 動態生成，以便於管理 -->
+    </div>
+    <div class="footer-note">
+        <i class="fas fa-shield-alt"></i> 安全結帳 · 全球免運 · 24/7 客服 
+        <span style="margin:0 8px">|</span> 
+        <i class="fas fa-chart-line"></i> 極客數據即時追蹤
+    </div>
+</div>
+
+<!-- 商品詳情彈窗 -->
+<div id="detailModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle">商品名稱</h3>
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body" id="modalBody">
+            <!-- 詳細規格動態填入 -->
+        </div>
+    </div>
+</div>
+
+<script>
+    // ---------- 商品資料庫 (根據 2026 Apple 傳聞新品整理) ----------
+    const products = [
+        {
+            id: 1,
+            name: "智慧運動手錶 Pro",
+            name_en: "Apple Watch Ultra 4",
+            badge: "旗艦",
+            icon: "⌚️",
+            price: 799,
+            desc: "49mm 鈦金屬錶殼｜S11 晶片｜最長 72 小時續航｜5G 行動網路｜衛星 SOS",
+            longSpecs: "Apple Watch Ultra 4 預計於 2026 年 9 月隨 iPhone 18 系列一同亮相。採用更堅固的航空級鈦金屬錶殼，搭載全新 S11 晶片，支援 5G 連線與衛星 SOS 緊急通訊。續航表現大幅提升至 72 小時（低耗電模式），並具備血壓監測與睡眠呼吸中止偵測等進階健康功能。螢幕邊框進一步縮窄，顯示區域更大更亮，是專為極限運動與戶外探索設計的終極智慧手錶。"
+        },
+        {
+            id: 2,
+            name: "降噪無線耳機 X1",
+            name_en: "AirPods Pro 3",
+            badge: "AI 驅動",
+            icon: "🎧",
+            price: 249,
+            desc: "H3 晶片｜紅外線手勢控制｜心率監測｜8 小時續航｜IP57 防水",
+            longSpecs: "AirPods Pro 3 作為時隔三年的重大更新，搭載全新 H3 晶片，導入紅外線攝影機用於手勢控制，徹底取代傳統壓感柄。主動降噪效果為「業界最佳」，並加入心率感測器，可在運動時監測心率。支援 Apple Intelligence 即時翻譯功能，單次充電聆聽時間長達 8 小時，搭配充電盒可達 30 小時，具備 IP57 防塵防水等級。"
+        },
+        {
+            id: 3,
+            name: "智慧型手機 Nova S",
+            name_en: "iPhone Air",
+            badge: "極致輕薄",
+            icon: "📱",
+            price: 899,
+            desc: "5.6mm 超薄機身｜A19 晶片｜256GB 起｜6.6 吋 OLED｜C1X 數據晶片",
+            longSpecs: "iPhone Air 是 2026 年全新推出的超薄機型，厚度僅 5.6mm，為有史以來最薄的 iPhone。搭載 A19 晶片與 8GB 記憶體，配備 6.6 吋 OLED 螢幕，基礎儲存空間 256GB 起跳。採用鈦金屬邊框與新一代 Ceramic Shield 玻璃，耐用度大幅提升。支援 Wi-Fi 7、藍牙 6 與 Threads 標準，透過 C1X 自製數據晶片提供穩定連線。"
+        },
+        {
+            id: 4,
+            name: "輕薄筆電 AirBook",
+            name_en: "MacBook Air (M5)",
+            badge: "AI 運算",
+            icon: "💻",
+            price: 1199,
+            desc: "M5 晶片｜512GB 起｜Wi-Fi 7｜18 小時續航｜AI 加速",
+            longSpecs: "全新 MacBook Air 搭載 M5 晶片，CPU 與 GPU 效能大幅提升，NPU 神經網絡引擎可加速 AI 運算任務。13.6 吋 Liquid Retina 顯示器，起始儲存空間翻倍至 512GB，最高可選配 4TB。引入 Apple 自研 N1 無線晶片，支援 Wi-Fi 7 與藍牙 6，提供更高速穩定的連線體驗。電池續航長達 18 小時，並提供天空藍、星光色等四種時尚配色。"
+        }
+    ];
+
+    // 渲染商品列表
+    const grid = document.getElementById('productsGrid');
+    function renderProducts() {
+        grid.innerHTML = '';
+        products.forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.setAttribute('data-product-name', p.name);
+            card.innerHTML = `
+                <div class="product-img">${p.icon}</div>
+                <div class="product-info">
+                    <div class="product-title">
+                        ${p.name}
+                        <span class="badge">${p.badge}</span>
+                    </div>
+                    <div class="product-desc">${p.desc}</div>
+                    <div class="price">$${p.price} <small>USD</small></div>
+                    <div class="btn-group">
+                        <button class="detail-btn" onclick="viewDetail(${p.id})"><i class="fas fa-info-circle"></i> 查看詳情</button>
+                        <button class="buy-btn" onclick="buyNow('${p.name}', ${p.price})"><i class="fas fa-cart-shopping"></i> 立即購買</button>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    // 查看詳情 (觸發 GA4 事件)
+    function viewDetail(productId) {
+        const product = products.find(p => p.id === productId);
+        if (!product) return;
+        // GA4 自訂事件：商品詳情瀏覽
+        gtag('event', 'view_detail', {
+            'product_name': product.name,
+            'product_id': product.id
+        });
+        // 填充彈窗內容
+        document.getElementById('modalTitle').innerHTML = `${product.name} <span style="font-size:0.9rem; font-weight:normal;">(${product.name_en})</span>`;
+        document.getElementById('modalBody').innerHTML = `
+            <div class="spec-item"><span class="spec-label">📦 型號</span><span class="spec-value">${product.name_en}</span></div>
+            <div class="spec-item"><span class="spec-label">💰 建議售價</span><span class="spec-value">US$${product.price}</span></div>
+            <div class="spec-item"><span class="spec-label">⚙️ 核心規格</span><span class="spec-value">${product.desc}</span></div>
+            <div class="spec-item"><span class="spec-label">📖 詳細介紹</span><span class="spec-value">${product.longSpecs}</span></div>
+        `;
+        document.getElementById('detailModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('detailModal').style.display = 'none';
+    }
+
+    // 購買點擊事件
+    function buyNow(productName, price) {
+        gtag('event', 'purchase_click', {
+            'product_name': productName,
+            'price': price,
+            'currency': 'USD'
+        });
+        alert(`✅ 您點擊了購買：${productName}\n💰 金額：US$${price}\n`);
+    }
+
+    // 自動觸發 view_product 事件 (滾動監測)
+    document.addEventListener('DOMContentLoaded', function() {
+        renderProducts();
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const card = entry.target;
+                    const productName = card.getAttribute('data-product-name');
+                    if (productName) {
+                        gtag('event', 'view_product', { 'product_name': productName });
+                        console.log(`📊 GA4 事件：view_product -> ${productName}`);
+                        observer.unobserve(card);
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.product-card').forEach(card => observer.observe(card));
+        // 點擊彈窗外部關閉
+        window.onclick = function(e) { if (e.target === document.getElementById('detailModal')) closeModal(); };
+    });
+</script>
+</body>
+</html>

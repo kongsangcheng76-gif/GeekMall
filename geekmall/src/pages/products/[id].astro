@@ -1,0 +1,208 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import products from '../../data/products.json';
+
+export function getStaticPaths() {
+  return products.map(product => ({
+    params: { id: String(product.id) },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+const productJson = { id: product.id, name: product.name, brand: product.brand, category: product.category, price: product.price, image: product.image };
+
+const related = products
+  .filter(p => p.category === product.category && p.id !== product.id)
+  .slice(0, 4);
+---
+
+<BaseLayout title={product.name}>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="/">首頁</a> <i class="fas fa-chevron-right"></i>
+      <a href="/products/">全部商品</a> <i class="fas fa-chevron-right"></i>
+      <a href={`/products/?category=${product.category}`}>{product.category}</a> <i class="fas fa-chevron-right"></i>
+      <span>{product.name}</span>
+    </div>
+
+    <div class="product-detail">
+      <div class="detail-image">
+        <img src={product.image} alt={product.name} />
+        <span class="badge detail-badge">{product.badge}</span>
+      </div>
+
+      <div class="detail-info">
+        <div class="detail-brand">{product.brand}</div>
+        <h1 class="detail-title">{product.name}</h1>
+        <p class="detail-desc">{product.desc}</p>
+
+        <div class="detail-price">
+          <span class="price-main">${product.price}</span>
+          <span class="price-currency">USD</span>
+        </div>
+
+        <div class="detail-actions">
+          <button class="btn btn-secondary btn-lg" id="cartBtn"
+                  data-product-id={product.id} data-product-name={product.name}
+                  data-product-brand={product.brand} data-product-category={product.category}
+                  data-product-price={product.price} data-product-image={product.image}>
+            <i class="fas fa-plus"></i> 加入購物車
+          </button>
+          <button class="btn btn-accent btn-lg" id="buyBtn"
+                  data-product-id={product.id} data-product-name={product.name}
+                  data-product-brand={product.brand} data-product-category={product.category}
+                  data-product-price={product.price} data-product-image={product.image}>
+            <i class="fas fa-bolt"></i> 立即購買
+          </button>
+        </div>
+
+        <div class="detail-specs">
+          <h3>產品規格</h3>
+          <div class="specs-grid">
+            {Object.entries(product.specs).map(([key, value]) => (
+              <div class="spec-item">
+                <span class="spec-label">{key}</span>
+                <span class="spec-value">{value}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Products -->
+    {related.length > 0 && (
+      <section class="related-section reveal">
+        <h2 class="section-title">相關商品</h2>
+        <div class="related-grid">
+          {related.map(p => (
+            <a href={`/products/${p.id}/`} class="related-card">
+              <img src={p.image} alt={p.name} loading="lazy" />
+              <div class="related-info">
+                <span class="related-name">{p.name}</span>
+                <span class="related-price">${p.price}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+  }
+  .breadcrumb a:hover { color: var(--color-accent); }
+  .breadcrumb i { font-size: 0.6rem; }
+
+  .product-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .detail-image {
+    position: relative;
+    background: var(--color-bg);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .detail-image img { width: 100%; height: 400px; object-fit: cover; }
+  .detail-badge { position: absolute; top: 1rem; left: 1rem; }
+
+  .detail-info { display: flex; flex-direction: column; gap: 1rem; }
+  .detail-brand { font-size: 0.8rem; font-weight: 600; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.05em; }
+  .detail-title { font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; }
+  .detail-desc { font-size: 0.95rem; color: var(--color-text-secondary); line-height: 1.6; }
+
+  .detail-price { display: flex; align-items: baseline; gap: 0.5rem; }
+  .price-main { font-size: 2.5rem; font-weight: 900; color: var(--color-accent); }
+  .price-currency { font-size: 1rem; color: var(--color-text-muted); }
+
+  .detail-actions { display: flex; gap: 1rem; }
+  .btn-lg { padding: 1rem 2rem; font-size: 1rem; }
+
+  .detail-specs {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .detail-specs h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; }
+  .specs-grid { display: flex; flex-direction: column; gap: 0.75rem; }
+  .spec-item {
+    display: flex;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+  .spec-label { width: 120px; font-weight: 600; font-size: 0.85rem; flex-shrink: 0; }
+  .spec-value { font-size: 0.85rem; color: var(--color-text-secondary); }
+
+  /* Related */
+  .related-section { margin-top: 2rem; }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .related-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--color-border-light);
+    transition: all 0.2s ease;
+  }
+  .related-card:hover { border-color: var(--color-accent); transform: translateY(-4px); }
+  .related-card img { width: 100%; height: 140px; object-fit: cover; }
+  .related-info { padding: 0.75rem 1rem; display: flex; justify-content: space-between; align-items: center; }
+  .related-name { font-size: 0.85rem; font-weight: 600; }
+  .related-price { font-size: 0.9rem; font-weight: 700; color: var(--color-accent); }
+
+  @media (max-width: 768px) {
+    .product-detail { grid-template-columns: 1fr; }
+    .detail-actions { flex-direction: column; }
+  }
+</style>
+
+<script define:vars={{ productJson }}>
+  // GA4: view_item on page load
+  if (typeof GA4 !== 'undefined') {
+    GA4.viewItem(productJson);
+  }
+
+  function getItemFromBtn(btn) {
+    return {
+      id: parseInt(btn.dataset.productId),
+      name: btn.dataset.productName,
+      brand: btn.dataset.productBrand,
+      category: btn.dataset.productCategory,
+      price: parseFloat(btn.dataset.productPrice),
+      image: btn.dataset.productImage
+    };
+  }
+
+  // GA4: add_to_cart
+  document.getElementById('cartBtn')?.addEventListener('click', function () {
+    var item = getItemFromBtn(this);
+    if (typeof GA4 !== 'undefined') GA4.addToCart(item);
+    if (typeof GeekCart !== 'undefined') GeekCart.addItem(item);
+    alert('已將 ' + item.name + ' 加入購物車！');
+  });
+
+  // GA4: add_to_cart + begin_checkout + redirect to checkout
+  document.getElementById('buyBtn')?.addEventListener('click', function () {
+    var item = getItemFromBtn(this);
+    if (typeof GA4 !== 'undefined') GA4.addToCart(item);
+    if (typeof GeekCart !== 'undefined') GeekCart.addItem(item);
+    if (typeof GA4 !== 'undefined') GA4.beginCheckout([Object.assign({}, item, { quantity: 1 })], item.price);
+    window.location.href = '/checkout/';
+  });
+</script>

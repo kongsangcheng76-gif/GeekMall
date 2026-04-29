@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="關於我們">
+  <div class="container">
+    <div class="about-hero">
+      <h1>關於極客商城</h1>
+      <p class="about-intro">我們致力於為科技愛好者提供最前沿的電子產品購物體驗，匯聚全球頂尖品牌，讓未來科技觸手可及。</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-card">
+        <i class="fas fa-bolt"></i>
+        <h3>最新科技</h3>
+        <p>精選來自 ASUS、GIGABYTE、Apple、MSI 等頂尖品牌的最新產品，第一時間為你帶來科技前沿。</p>
+      </div>
+      <div class="about-card">
+        <i class="fas fa-shield-alt"></i>
+        <h3>正品保證</h3>
+        <p>所有商品均為品牌正品，提供完整保固服務，讓你安心選購。</p>
+      </div>
+      <div class="about-card">
+        <i class="fas fa-truck"></i>
+        <h3>全球配送</h3>
+        <p>支援全球免運配送，快速到貨，讓你無論身在何處都能享受優質服務。</p>
+      </div>
+      <div class="about-card">
+        <i class="fas fa-headset"></i>
+        <h3>24/7 客服</h3>
+        <p>專業客服團隊全天候在線，隨時為你解答任何問題，提供最佳購物建議。</p>
+      </div>
+    </div>
+
+    <div class="about-mission">
+      <h2>我們的使命</h2>
+      <p>極客商城相信科技能改變生活。我們的使命是連接全球頂尖科技品牌與每一位熱愛創新的消費者，讓最先進的電子產品不再遙不可及。無論你是電競玩家、創作者還是科技發燒友，極客商城都是你的最佳選擇。</p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .about-hero { text-align: center; margin-bottom: 3rem; }
+  .about-hero h1 { font-size: 2.5rem; font-weight: 900; margin-bottom: 1rem; }
+  .about-intro { font-size: 1.1rem; color: var(--color-text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  .about-card {
+    background: var(--color-surface-solid);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.2s ease;
+  }
+  .about-card:hover { border-color: var(--color-accent); transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .about-card i { font-size: 2rem; color: var(--color-accent); margin-bottom: 1rem; }
+  .about-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .about-card p { font-size: 0.85rem; color: var(--color-text-secondary); line-height: 1.5; }
+
+  .about-mission {
+    background: var(--color-surface-solid);
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+    border: 1px solid var(--color-border-light);
+    text-align: center;
+  }
+  .about-mission h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; }
+  .about-mission p { font-size: 1rem; color: var(--color-text-secondary); line-height: 1.8; max-width: 700px; margin: 0 auto; }
+
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-hero h1 { font-size: 2rem; }
+  }
+  @media (max-width: 480px) {
+    .about-grid { grid-template-columns: 1fr; }
+  }
+</style>

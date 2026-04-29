@@ -1,0 +1,173 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="購物車">
+  <div class="container">
+    <h1 class="page-title"><i class="fas fa-cart-shopping"></i> 購物車</h1>
+
+    <div id="cartContent">
+      <!-- Dynamically rendered -->
+    </div>
+
+    <div id="cartEmpty" style="display:none;">
+      <div class="empty-state">
+        <i class="fas fa-cart-shopping"></i>
+        <h2>購物車是空的</h2>
+        <p>快去選購心儀的商品吧！</p>
+        <a href="/products/" class="btn btn-accent">瀏覽商品</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-title { font-size: 2rem; font-weight: 800; margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem; }
+  .page-title i { color: var(--color-accent); }
+
+  .cart-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 1.5rem;
+    background: var(--color-surface-solid);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    margin-bottom: 1rem;
+    transition: all 0.2s ease;
+  }
+  .cart-item:hover { border-color: var(--color-accent); }
+  .cart-item img { width: 100px; height: 75px; object-fit: cover; border-radius: var(--radius-sm); }
+  .cart-item-info h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.25rem; }
+  .cart-item-info p { font-size: 0.8rem; color: var(--color-text-secondary); }
+  .cart-item-price { font-size: 1.2rem; font-weight: 800; color: var(--color-accent); white-space: nowrap; }
+  .cart-remove {
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+  }
+  .cart-remove:hover { border-color: #ef4444; color: #ef4444; }
+
+  .cart-summary {
+    background: var(--color-surface-solid);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .cart-total { font-size: 1.5rem; font-weight: 800; }
+  .cart-total span { color: var(--color-accent); }
+  .cart-actions { display: flex; gap: 1rem; }
+  .btn-lg { padding: 1rem 2rem; font-size: 1rem; }
+
+  .trust-badges {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+  }
+  .trust-badge i { color: #22c55e; font-size: 1.1rem; }
+
+  .empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+  .empty-state i { font-size: 4rem; color: var(--color-border); margin-bottom: 1.5rem; }
+  .empty-state h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .empty-state p { color: var(--color-text-secondary); margin-bottom: 1.5rem; }
+
+  @media (max-width: 768px) {
+    .cart-item { grid-template-columns: auto 1fr; gap: 1rem; }
+    .cart-item-price { grid-column: 1 / -1; }
+    .cart-remove { position: absolute; top: 1rem; right: 1rem; }
+    .cart-item { position: relative; }
+    .cart-summary { flex-direction: column; text-align: center; }
+    .cart-actions { flex-direction: column; width: 100%; }
+    .cart-actions .btn { width: 100%; text-align: center; }
+  }
+</style>
+
+<script is:inline>
+  function renderCart() {
+    var content = document.getElementById('cartContent');
+    var empty = document.getElementById('cartEmpty');
+    if (!content || !empty) return;
+
+    var items = window.GeekCart ? GeekCart.items : [];
+    if (items.length === 0) {
+      content.style.display = 'none';
+      empty.style.display = 'block';
+      return;
+    }
+
+    content.style.display = 'block';
+    empty.style.display = 'none';
+
+    var html = '';
+    items.forEach(function (item) {
+      html += '<div class="cart-item">' +
+        '<img src="' + item.image + '" alt="' + item.name + '" />' +
+        '<div class="cart-item-info">' +
+          '<h3>' + item.name + '</h3>' +
+          '<p>' + item.brand + ' · ' + item.category + '</p>' +
+        '</div>' +
+        '<div class="cart-item-price">$' + item.price + ' USD</div>' +
+        '<button class="cart-remove" onclick="removeItem(' + item.id + ')"><i class="fas fa-trash"></i> 移除</button>' +
+      '</div>';
+    });
+
+    var total = GeekCart.getTotal();
+    html += '<div class="cart-summary">' +
+      '<div class="cart-total">合計：<span>$' + total.toFixed(0) + ' USD</span></div>' +
+      '<div class="cart-actions">' +
+        '<a href="/products/" class="btn btn-secondary btn-lg"><i class="fas fa-arrow-left"></i> 繼續購物</a>' +
+        '<button class="btn btn-accent btn-lg" onclick="beginCheckout()"><i class="fas fa-lock"></i> 安全快速結帳</button>' +
+      '</div>' +
+    '</div>';
+    html += '<div class="trust-badges">' +
+      '<span class="trust-badge"><i class="fas fa-shield-halved"></i> SSL 安全加密</span>' +
+      '<span class="trust-badge"><i class="fas fa-rotate-left"></i> 14 天無條件退貨</span>' +
+      '<span class="trust-badge"><i class="fas fa-truck-fast"></i> 香港 24 小時出貨</span>' +
+    '</div>';
+
+    content.innerHTML = html;
+  }
+
+  function removeItem(id) {
+    if (window.GeekCart) {
+      GeekCart.removeItem(id);
+      renderCart();
+    }
+  }
+
+  function beginCheckout() {
+    if (!window.GeekCart || GeekCart.items.length === 0) return;
+    var items = GeekCart.items;
+    var total = GeekCart.getTotal();
+    if (window.GA4) {
+      GA4.beginCheckout(items, total);
+    }
+    window.location.href = '/checkout/';
+  }
+
+  document.addEventListener('DOMContentLoaded', renderCart);
+</script>

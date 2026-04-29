@@ -1,0 +1,546 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import products from '../data/products.json';
+
+const featuredProducts = products.slice(0, 8);
+const dealProducts = products.filter(p => p.badge === '暢銷' || p.badge === '性價比王' || p.badge === '入門' || p.badge === '輕量' || p.badge === '主流').slice(0, 4);
+const brands = [...new Set(products.map(p => p.brand))];
+const featuredJson = featuredProducts.map(p => ({ id: p.id, name: p.name, brand: p.brand, category: p.category, price: p.price }));
+
+const categories = [
+  { label: '筆記型電腦', icon: 'fa-laptop', href: '/products/?category=laptops', color: '#3b82f6' },
+  { label: '手機', icon: 'fa-mobile-screen', href: '/products/?category=smartphones', color: '#8b5cf6' },
+  { label: '平板電腦', icon: 'fa-tablet-screen-button', href: '/products/?category=tablets', color: '#06b6d4' },
+  { label: '顯示卡', icon: 'fa-microchip', href: '/products/?category=graphics-cards', color: '#ef4444' },
+  { label: '主機板', icon: 'fa-server', href: '/products/?category=motherboards', color: '#f59e0b' },
+  { label: '顯示器', icon: 'fa-desktop', href: '/products/?category=monitors', color: '#10b981' },
+  { label: '耳機/音頻', icon: 'fa-headphones', href: '/products/?category=headphones', color: '#ec4899' },
+  { label: '智慧手錶', icon: 'fa-clock', href: '/products/?category=smartwatches', color: '#f97316' },
+  { label: '鍵鼠周邊', icon: 'fa-keyboard', href: '/products/?category=keyboards-mice', color: '#6366f1' },
+  { label: '網絡設備', icon: 'fa-wifi', href: '/products/?category=networking', color: '#14b8a6' },
+];
+---
+
+<BaseLayout title="首頁">
+  <div class="container">
+
+    <!-- ===== HERO CAROUSEL ===== -->
+    <section class="hero-carousel" id="heroCarousel">
+      <div class="carousel-track">
+        <!-- Slide 1 -->
+        <div class="carousel-slide active" style="background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #1e293b 100%);">
+          <div class="slide-content">
+            <span class="slide-badge">新季登場</span>
+            <h2>ROG Strix G16</h2>
+            <p>Intel Core i9 + RTX 5070 Ti｜16 吋 240Hz Nebula HDR</p>
+            <div class="slide-price"><span class="old-price">$2,199</span> <span class="now-price">$1,899</span> <small>USD</small></div>
+            <a href="/products/1/" class="btn btn-accent"><i class="fas fa-cart-shopping"></i> 立即選購</a>
+          </div>
+          <div class="slide-image">
+            <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&h=400&fit=crop" alt="ROG Strix G16" />
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="carousel-slide" style="background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);">
+          <div class="slide-content">
+            <span class="slide-badge">旗艦顯示卡</span>
+            <h2>ROG Strix RTX 5090</h2>
+            <p>NVIDIA Blackwell｜32GB GDDR7｜384-bit｜三風扇散熱</p>
+            <div class="slide-price"><span class="now-price">$2,299</span> <small>USD</small></div>
+            <a href="/products/17/" class="btn btn-accent"><i class="fas fa-bolt"></i> 查看詳情</a>
+          </div>
+          <div class="slide-image">
+            <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=500&h=400&fit=crop" alt="RTX 5090" />
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="carousel-slide" style="background: linear-gradient(135deg, #18181b 0%, #27272a 50%, #3f3f46 100%);">
+          <div class="slide-content">
+            <span class="slide-badge">Apple 生態</span>
+            <h2>iPhone 16 Pro Max</h2>
+            <p>A18 Pro 晶片｜6.9 吋 Super Retina XDR｜鈦金屬設計</p>
+            <div class="slide-price"><span class="now-price">$1,199</span> <small>USD</small></div>
+            <a href="/products/9/" class="btn btn-accent"><i class="fas fa-apple"></i> 探索更多</a>
+          </div>
+          <div class="slide-image">
+            <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=500&h=400&fit=crop" alt="iPhone 16 Pro Max" />
+          </div>
+        </div>
+      </div>
+      <div class="carousel-nav">
+        <button class="carousel-dot active" data-slide="0"></button>
+        <button class="carousel-dot" data-slide="1"></button>
+        <button class="carousel-dot" data-slide="2"></button>
+      </div>
+      <button class="carousel-arrow carousel-prev" id="carouselPrev"><i class="fas fa-chevron-left"></i></button>
+      <button class="carousel-arrow carousel-next" id="carouselNext"><i class="fas fa-chevron-right"></i></button>
+    </section>
+
+    <!-- ===== CATEGORY QUICK ACCESS ===== -->
+    <section class="categories-section reveal">
+      <h2 class="section-title">探索分類</h2>
+      <div class="categories-grid reveal-stagger">
+        {categories.map(cat => (
+          <a href={cat.href} class="category-card">
+            <div class="category-icon" style={`background: ${cat.color}15; color: ${cat.color};`}>
+              <i class={`fas ${cat.icon}`}></i>
+            </div>
+            <span class="category-label">{cat.label}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- ===== DEALS / PROMOTIONS ===== -->
+    <section class="deals-section reveal">
+      <div class="deals-header">
+        <h2 class="section-title" style="margin-bottom:0;">限時優惠</h2>
+        <div class="deals-timer">
+          <i class="fas fa-clock"></i>
+          <span id="dealTimer">23:59:59</span>
+        </div>
+      </div>
+      <div class="deals-grid">
+        {dealProducts.map(product => (
+          <a href={`/products/${product.id}/`} class="deal-card">
+            <div class="deal-img">
+              <img src={product.image} alt={product.name} loading="lazy" />
+              <span class="badge deal-badge">限時優惠</span>
+            </div>
+            <div class="deal-info">
+              <span class="deal-brand">{product.brand}</span>
+              <h3 class="deal-name">{product.name}</h3>
+              <div class="deal-pricing">
+                <span class="deal-price">${Math.round(product.price * 0.9)}</span>
+                <span class="deal-original">${product.price}</span>
+                <span class="deal-discount">-10%</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- ===== BRANDS ===== -->
+    <section class="brands-section reveal">
+      <h2 class="section-title">合作品牌</h2>
+      <div class="brands-grid reveal-stagger">
+        {brands.map(brand => (
+          <a href={`/products/?brand=${brand}`} class="brand-card">
+            <span class="brand-name">{brand}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- ===== FEATURED PRODUCTS ===== -->
+    <section class="featured-section reveal" id="featured">
+      <h2 class="section-title">精選商品</h2>
+      <div class="products-grid">
+        {featuredProducts.map(product => (
+          <a href={`/products/${product.id}/`} class="product-card ga4-product-card"
+             data-product-id={product.id} data-product-name={product.name}
+             data-product-brand={product.brand} data-product-category={product.category}
+             data-product-price={product.price}>
+            <div class="product-img">
+              <img src={product.image} alt={product.name} loading="lazy" />
+              <span class="badge product-badge">{product.badge}</span>
+            </div>
+            <div class="product-info">
+              <div class="product-title">
+                <span>{product.name}</span>
+                <span class="product-brand">{product.brand}</span>
+              </div>
+              <p class="product-desc">{product.desc}</p>
+              <div class="product-footer">
+                <span class="price">${product.price} <small>USD</small></span>
+                <span class="btn btn-primary btn-sm">查看詳情</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="view-all">
+        <a href="/products/" class="btn btn-secondary">查看全部 {products.length} 件商品 <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  /* ===== HERO CAROUSEL ===== */
+  .hero-carousel {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 3rem;
+    margin-top: 0.5rem;
+  }
+  .carousel-track { position: relative; }
+  .carousel-slide {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 3rem 4rem;
+    gap: 3rem;
+    min-height: 360px;
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    opacity: 0;
+    transform: translateX(40px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+  .carousel-slide.active {
+    position: relative;
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+  .carousel-slide.exit-left {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  .slide-badge {
+    display: inline-block;
+    background: var(--color-accent);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.3rem 1rem;
+    border-radius: var(--radius-full);
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .slide-content h2 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: white;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.75rem;
+  }
+  .slide-content p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+  }
+  .slide-price { margin-bottom: 1.5rem; }
+  .old-price { color: rgba(255,255,255,0.4); text-decoration: line-through; font-size: 1.1rem; margin-right: 0.75rem; }
+  .now-price { font-size: 2rem; font-weight: 900; color: var(--color-accent); }
+  .now-price small, .slide-price small { font-size: 0.85rem; font-weight: 500; color: rgba(255,255,255,0.5); }
+  .slide-image img { width: 100%; max-width: 440px; height: 300px; object-fit: cover; border-radius: var(--radius-md); box-shadow: 0 20px 40px rgba(0,0,0,0.3); margin-left: auto; }
+
+  .carousel-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 0;
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+  }
+  .carousel-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+  .carousel-dot.active { background: var(--color-accent); width: 28px; border-radius: 5px; }
+
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px; height: 44px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    transition: all 0.2s ease;
+  }
+  .carousel-arrow:hover { background: rgba(255,255,255,0.25); }
+  .carousel-prev { left: 1rem; }
+  .carousel-next { right: 1rem; }
+
+  /* ===== CATEGORIES ===== */
+  .categories-section { margin-bottom: 3rem; }
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+  }
+  .category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.5rem 1rem;
+    background: var(--color-surface-solid);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    transition: all 0.25s ease;
+  }
+  .category-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+  .category-icon {
+    width: 52px; height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    font-size: 1.3rem;
+    transition: transform 0.25s ease;
+  }
+  .category-card:hover .category-icon { transform: scale(1.15); }
+  .category-label { font-size: 0.82rem; font-weight: 600; color: var(--color-text-secondary); text-align: center; }
+
+  /* ===== DEALS ===== */
+  .deals-section { margin-bottom: 3rem; }
+  .deals-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  .deals-timer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #fef2f2;
+    color: #ef4444;
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--radius-full);
+    font-size: 0.9rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .deals-timer i { animation: pulse 1s ease infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  .deals-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+  .deal-card {
+    background: var(--color-surface-solid);
+    border: 2px solid #fef2f2;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .deal-card:hover { border-color: #ef4444; transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .deal-img { position: relative; background: var(--color-bg); }
+  .deal-img img { width: 100%; height: 180px; object-fit: cover; }
+  .deal-badge {
+    position: absolute;
+    top: 0.75rem; left: 0.75rem;
+    background: #ef4444 !important;
+    color: white !important;
+  }
+  .deal-info { padding: 1rem 1.25rem; }
+  .deal-brand { font-size: 0.7rem; font-weight: 600; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.05em; }
+  .deal-name { font-size: 0.95rem; font-weight: 700; margin: 0.35rem 0; }
+  .deal-pricing { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+  .deal-price { font-size: 1.25rem; font-weight: 800; color: #ef4444; }
+  .deal-original { font-size: 0.85rem; color: var(--color-text-muted); text-decoration: line-through; }
+  .deal-discount { font-size: 0.7rem; font-weight: 700; color: #ef4444; background: #fef2f2; padding: 0.15rem 0.5rem; border-radius: var(--radius-full); }
+
+  /* ===== BRANDS ===== */
+  .brands-section { margin-bottom: 3rem; }
+  .brands-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .brand-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: var(--color-surface-solid);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+  }
+  .brand-card:hover {
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+  }
+  .brand-name { font-size: 1.2rem; font-weight: 800; letter-spacing: 0.02em; color: var(--color-primary); }
+
+  /* ===== PRODUCTS GRID ===== */
+  .featured-section { margin-bottom: 2rem; }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .product-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--color-border-light);
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+  }
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-accent);
+    background: var(--color-surface-solid);
+  }
+  .product-img { position: relative; background: var(--color-bg); overflow: hidden; }
+  .product-img img { width: 100%; height: 200px; object-fit: cover; }
+  .product-badge { position: absolute; top: 0.75rem; left: 0.75rem; }
+  .product-info { padding: 1.25rem 1.5rem 1.5rem; }
+  .product-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  .product-brand { font-size: 0.75rem; color: var(--color-text-muted); font-weight: 500; }
+  .product-desc {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .product-footer { display: flex; align-items: center; justify-content: space-between; }
+  .price { font-size: 1.4rem; font-weight: 800; color: var(--color-accent); }
+  .price small { font-size: 0.75rem; font-weight: 500; color: var(--color-text-muted); }
+  .btn-sm { padding: 0.5rem 1rem; font-size: 0.8rem; }
+  .view-all { text-align: center; padding: 1rem 0; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .categories-grid { grid-template-columns: repeat(5, 1fr); }
+    .deals-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .carousel-slide { grid-template-columns: 1fr; padding: 2rem 1.5rem; min-height: auto; }
+    .slide-content h2 { font-size: 2rem; }
+    .slide-image { display: none; }
+    .categories-grid { grid-template-columns: repeat(5, 1fr); gap: 0.5rem; }
+    .category-card { padding: 1rem 0.5rem; }
+    .category-icon { width: 42px; height: 42px; font-size: 1.1rem; }
+    .category-label { font-size: 0.7rem; }
+    .deals-grid { grid-template-columns: repeat(2, 1fr); }
+    .brands-grid { grid-template-columns: repeat(2, 1fr); }
+    .products-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+  }
+  @media (max-width: 480px) {
+    .categories-grid { grid-template-columns: repeat(5, 1fr); }
+    .deals-grid { grid-template-columns: 1fr; }
+    .deals-header { flex-direction: column; gap: 0.75rem; align-items: flex-start; }
+  }
+</style>
+
+<script is:inline>
+  // ===== HERO CAROUSEL =====
+  (function () {
+    var slides = document.querySelectorAll('.carousel-slide');
+    var dots = document.querySelectorAll('.carousel-dot');
+    var current = 0;
+    var timer;
+
+    function showSlide(index, direction) {
+      slides[current].classList.remove('active');
+      if (direction === 'next') slides[current].classList.add('exit-left');
+      dots[current].classList.remove('active');
+
+      current = (index + slides.length) % slides.length;
+
+      slides[current].classList.remove('exit-left');
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+
+      setTimeout(function () {
+        slides.forEach(function (s) { s.classList.remove('exit-left'); });
+      }, 600);
+
+      resetTimer();
+    }
+
+    function nextSlide() { showSlide(current + 1, 'next'); }
+    function prevSlide() { showSlide(current - 1, 'prev'); }
+
+    function resetTimer() {
+      clearInterval(timer);
+      timer = setInterval(nextSlide, 5000);
+    }
+
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () { showSlide(i); });
+    });
+
+    document.getElementById('carouselNext')?.addEventListener('click', nextSlide);
+    document.getElementById('carouselPrev')?.addEventListener('click', prevSlide);
+
+    resetTimer();
+  })();
+
+  // ===== DEAL TIMER =====
+  (function () {
+    var el = document.getElementById('dealTimer');
+    if (!el) return;
+    var h = 23, m = 59, s = 59;
+    function tick() {
+      s--;
+      if (s < 0) { s = 59; m--; }
+      if (m < 0) { m = 59; h--; }
+      if (h < 0) { h = 23; m = 59; s = 59; }
+      el.textContent =
+        String(h).padStart(2, '0') + ':' +
+        String(m).padStart(2, '0') + ':' +
+        String(s).padStart(2, '0');
+    }
+    setInterval(tick, 1000);
+  })();
+</script>
+
+<script define:vars={{ featuredJson }}>
+  // GA4: view_item_list
+  if (typeof GA4 !== 'undefined') {
+    GA4.viewItemList(featuredJson, 'homepage-featured', '首頁精選商品');
+  }
+
+  // GA4: select_item
+  document.querySelectorAll('.ga4-product-card').forEach(function (card) {
+    card.addEventListener('click', function () {
+      if (typeof GA4 === 'undefined') return;
+      var item = {
+        id: parseInt(card.dataset.productId),
+        name: card.dataset.productName,
+        brand: card.dataset.productBrand,
+        category: card.dataset.productCategory,
+        price: parseFloat(card.dataset.productPrice)
+      };
+      GA4.selectItem(item, 'homepage-featured', '首頁精選商品');
+    });
+  });
+</script>

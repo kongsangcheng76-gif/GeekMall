@@ -1,0 +1,236 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="結帳">
+  <div class="container">
+    <div class="checkout-wrapper">
+      <!-- Checkout Form -->
+      <div id="checkoutForm_section">
+        <h1 class="page-title"><i class="fas fa-lock"></i> 安全結帳</h1>
+
+        <div class="checkout-grid">
+          <form id="checkoutForm" class="checkout-form">
+            <h2>收貨資訊</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="co_name">姓名</label>
+                <input type="text" id="co_name" placeholder="請輸入姓名" required />
+              </div>
+              <div class="form-group">
+                <label for="co_phone">電話</label>
+                <input type="tel" id="co_phone" placeholder="+852 XXXX XXXX" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="co_email">電子郵件</label>
+              <input type="email" id="co_email" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="co_address">收貨地址</label>
+              <textarea id="co_address" rows="2" placeholder="香港..." required></textarea>
+            </div>
+
+            <h2>付款方式</h2>
+            <div class="payment-options">
+              <label class="payment-option">
+                <input type="radio" name="payment" value="credit" checked />
+                <span><i class="fas fa-credit-card"></i> 信用卡</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment" value="fps" />
+                <span><i class="fas fa-qrcode"></i> 轉數快 FPS</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment" value="bank" />
+                <span><i class="fas fa-building-columns"></i> 銀行轉帳</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-accent btn-lg btn-full">
+              <i class="fas fa-check"></i> 確認購買
+            </button>
+          </form>
+
+          <div class="order-summary" id="orderSummary">
+            <h2>訂單摘要</h2>
+            <div id="summaryItems"></div>
+            <div class="summary-divider"></div>
+            <div class="summary-row"><span>小計</span><span id="subtotal">$0</span></div>
+            <div class="summary-row"><span>運費</span><span class="free-shipping">免費</span></div>
+            <div class="summary-row total"><span>合計</span><span id="totalPrice">$0 USD</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Success -->
+      <div id="checkoutSuccess" style="display:none;">
+        <div class="success-state">
+          <div class="success-icon"><i class="fas fa-check"></i></div>
+          <h1>購買成功！</h1>
+          <p class="success-desc">感謝您的訂購，我們將盡快處理您的訂單。</p>
+          <div class="success-detail" id="successDetail"></div>
+          <div class="success-actions">
+            <a href="/" class="btn btn-accent"><i class="fas fa-home"></i> 返回首頁</a>
+            <a href="/products/" class="btn btn-secondary"><i class="fas fa-shopping-bag"></i> 繼續購物</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-title { font-size: 2rem; font-weight: 800; margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem; }
+  .page-title i { color: var(--color-accent); }
+
+  .checkout-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .checkout-form {
+    background: var(--color-surface-solid);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+  }
+  .checkout-form h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; margin-top: 1.5rem; }
+  .checkout-form h2:first-child { margin-top: 0; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label { display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--color-text-secondary); }
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    background: white;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 3px rgba(249,115,22,0.1); }
+  .form-group textarea { resize: vertical; }
+
+  .payment-options { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; }
+  .payment-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .payment-option:has(input:checked) { border-color: var(--color-accent); background: rgba(249,115,22,0.04); }
+  .payment-option input { accent-color: var(--color-accent); }
+  .payment-option span { font-size: 0.9rem; font-weight: 500; }
+  .payment-option i { color: var(--color-accent); margin-right: 0.25rem; }
+
+  .btn-full { width: 100%; text-align: center; padding: 1rem; font-size: 1.05rem; }
+
+  .order-summary {
+    background: var(--color-surface-solid);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    position: sticky;
+    top: calc(var(--header-height) + 1rem);
+  }
+  .order-summary h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; }
+  .summary-item { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; font-size: 0.85rem; }
+  .summary-item-name { font-weight: 600; }
+  .summary-item-price { color: var(--color-accent); font-weight: 700; }
+  .summary-divider { height: 1px; background: var(--color-border); margin: 1rem 0; }
+  .summary-row { display: flex; justify-content: space-between; padding: 0.5rem 0; font-size: 0.9rem; }
+  .summary-row.total { font-size: 1.2rem; font-weight: 800; margin-top: 0.5rem; }
+  .summary-row.total span:last-child { color: var(--color-accent); }
+  .free-shipping { color: #22c55e; font-weight: 600; }
+
+  .success-state { text-align: center; padding: 4rem 2rem; }
+  .success-icon {
+    width: 80px; height: 80px;
+    background: #22c55e; color: white;
+    border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 2.5rem; margin-bottom: 1.5rem;
+    animation: scaleIn 0.4s ease;
+  }
+  @keyframes scaleIn { from { transform: scale(0); } to { transform: scale(1); } }
+  .success-state h1 { font-size: 2rem; font-weight: 900; margin-bottom: 0.5rem; }
+  .success-desc { color: var(--color-text-secondary); margin-bottom: 2rem; }
+  .success-detail {
+    background: var(--color-bg);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+  .success-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  @media (max-width: 768px) {
+    .checkout-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script is:inline>
+  function renderSummary() {
+    var items = window.GeekCart ? GeekCart.items : [];
+    var summaryEl = document.getElementById('summaryItems');
+    if (!summaryEl) return;
+
+    if (items.length === 0) {
+      window.location.href = '/cart/';
+      return;
+    }
+
+    var html = '';
+    items.forEach(function (item) {
+      html += '<div class="summary-item">' +
+        '<span class="summary-item-name">' + item.name + ' x' + item.quantity + '</span>' +
+        '<span class="summary-item-price">$' + (item.price * item.quantity) + '</span>' +
+      '</div>';
+    });
+    summaryEl.innerHTML = html;
+
+    var total = GeekCart.getTotal();
+    var subtotalEl = document.getElementById('subtotal');
+    var totalEl = document.getElementById('totalPrice');
+    if (subtotalEl) subtotalEl.textContent = '$' + total;
+    if (totalEl) totalEl.textContent = '$' + total + ' USD';
+  }
+
+  document.getElementById('checkoutForm')?.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var items = window.GeekCart ? GeekCart.items : [];
+    var total = GeekCart.getTotal();
+    var txId = 'TX-' + Date.now();
+
+    if (window.GA4) {
+      GA4.purchase(items, total, txId);
+    }
+
+    var detail = document.getElementById('successDetail');
+    if (detail) {
+      detail.innerHTML = '<strong>交易編號：</strong>' + txId + '<br>' +
+        '<strong>金額：</strong>$' + total + ' USD<br>' +
+        '<strong>商品數量：</strong>' + items.length + ' 件<br>' +
+        '<strong>付款狀態：</strong><span style="color:#22c55e">已確認</span>';
+    }
+
+    document.getElementById('checkoutForm_section').style.display = 'none';
+    document.getElementById('checkoutSuccess').style.display = 'block';
+
+    if (window.GeekCart) GeekCart.clear();
+  });
+
+  document.addEventListener('DOMContentLoaded', renderSummary);
+</script>

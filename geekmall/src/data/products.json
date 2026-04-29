@@ -1,0 +1,952 @@
+[
+  {
+    "id": 1,
+    "name": "ROG Strix G16",
+    "brand": "ASUS",
+    "category": "laptops",
+    "price": 1899,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=600&h=400&fit=crop",
+    "badge": "電競首選",
+    "desc": "Intel Core i9-14900HX｜RTX 5070 Ti｜16 吋 240Hz Nebula HDR｜32GB DDR5｜1TB SSD",
+    "specs": {
+      "處理器": "Intel Core i9-14900HX",
+      "顯示卡": "NVIDIA GeForce RTX 5070 Ti",
+      "記憶體": "32GB DDR5-5600",
+      "儲存": "1TB PCIe 4.0 NVMe SSD",
+      "螢幕": "16 吋 QHD+ 240Hz Nebula HDR",
+      "電池": "90Wh"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Zenbook 14 OLED",
+    "brand": "ASUS",
+    "category": "laptops",
+    "price": 1299,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&h=400&fit=crop",
+    "badge": "輕薄旗艦",
+    "desc": "Intel Core Ultra 7｜2.8K OLED｜16GB LPDDR5X｜512GB SSD｜1.28kg",
+    "specs": {
+      "處理器": "Intel Core Ultra 7 258V",
+      "顯示卡": "Intel Arc Xe2",
+      "記憶體": "16GB LPDDR5X",
+      "儲存": "512GB PCIe 4.0 NVMe SSD",
+      "螢幕": "14 吋 2.8K OLED 120Hz",
+      "重量": "1.28kg"
+    }
+  },
+  {
+    "id": 3,
+    "name": "VivoBook S 15",
+    "brand": "ASUS",
+    "category": "laptops",
+    "price": 799,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=600&h=400&fit=crop",
+    "badge": "性價比王",
+    "desc": "AMD Ryzen 7 8845HS｜15.6 吋 FHD IPS｜16GB DDR5｜512GB SSD",
+    "specs": {
+      "處理器": "AMD Ryzen 7 8845HS",
+      "顯示卡": "AMD Radeon 780M",
+      "記憶體": "16GB DDR5",
+      "儲存": "512GB PCIe 4.0 NVMe SSD",
+      "螢幕": "15.6 吋 FHD IPS 144Hz",
+      "重量": "1.60kg"
+    }
+  },
+  {
+    "id": 4,
+    "name": "AORUS 17X",
+    "brand": "GIGABYTE",
+    "category": "laptops",
+    "price": 2499,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&h=400&fit=crop",
+    "badge": "頂級電競",
+    "desc": "Intel Core i9-14900HX｜RTX 5090｜17.3 吋 240Hz Mini LED｜64GB DDR5｜2TB SSD",
+    "specs": {
+      "處理器": "Intel Core i9-14900HX",
+      "顯示卡": "NVIDIA GeForce RTX 5090",
+      "記憶體": "64GB DDR5-5600",
+      "儲存": "2TB PCIe 4.0 NVMe SSD",
+      "螢幕": "17.3 吋 QHD 240Hz Mini LED",
+      "電池": "99Wh"
+    }
+  },
+  {
+    "id": 5,
+    "name": "AERO 16 OLED",
+    "brand": "GIGABYTE",
+    "category": "laptops",
+    "price": 1999,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1537323718775-104e4475b4e7?w=600&h=400&fit=crop",
+    "badge": "創作者",
+    "desc": "Intel Core Ultra 9｜RTX 5070｜16 吋 4K OLED｜32GB DDR5｜1TB SSD",
+    "specs": {
+      "處理器": "Intel Core Ultra 9 285H",
+      "顯示卡": "NVIDIA GeForce RTX 5070",
+      "記憶體": "32GB DDR5-5600",
+      "儲存": "1TB PCIe 4.0 NVMe SSD",
+      "螢幕": "16 吋 4K OLED 100% DCI-P3",
+      "重量": "2.1kg"
+    }
+  },
+  {
+    "id": 6,
+    "name": "MacBook Air 15 M4",
+    "brand": "Apple",
+    "category": "laptops",
+    "price": 1299,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&h=400&fit=crop",
+    "badge": "M4 晶片",
+    "desc": "Apple M4 晶片｜15.3 吋 Liquid Retina｜24GB 統一記憶體｜512GB SSD",
+    "specs": {
+      "處理器": "Apple M4 (10 核心 CPU)",
+      "顯示卡": "Apple M4 (10 核心 GPU)",
+      "記憶體": "24GB 統一記憶體",
+      "儲存": "512GB SSD",
+      "螢幕": "15.3 吋 Liquid Retina",
+      "重量": "1.51kg"
+    }
+  },
+  {
+    "id": 7,
+    "name": "MacBook Pro 16 M4 Pro",
+    "brand": "Apple",
+    "category": "laptops",
+    "price": 2499,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=600&h=400&fit=crop",
+    "badge": "專業旗艦",
+    "desc": "Apple M4 Pro｜16.2 吋 Liquid Retina XDR｜48GB 統一記憶體｜1TB SSD",
+    "specs": {
+      "處理器": "Apple M4 Pro (14 核心 CPU)",
+      "顯示卡": "Apple M4 Pro (20 核心 GPU)",
+      "記憶體": "48GB 統一記憶體",
+      "儲存": "1TB SSD",
+      "螢幕": "16.2 吋 Liquid Retina XDR",
+      "重量": "2.14kg"
+    }
+  },
+  {
+    "id": 8,
+    "name": "Raider GE78 HX",
+    "brand": "MSI",
+    "category": "laptops",
+    "price": 2199,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=600&h=400&fit=crop",
+    "badge": "旗艦電競",
+    "desc": "Intel Core i9-14900HX｜RTX 5080｜17 吋 240Hz IPS｜32GB DDR5｜1TB SSD",
+    "specs": {
+      "處理器": "Intel Core i9-14900HX",
+      "顯示卡": "NVIDIA GeForce RTX 5080",
+      "記憶體": "32GB DDR5-5600",
+      "儲存": "1TB PCIe 5.0 NVMe SSD",
+      "螢幕": "17 吋 QHD 240Hz IPS",
+      "電池": "99.9Wh"
+    }
+  },
+  {
+    "id": 9,
+    "name": "iPhone 16 Pro Max",
+    "brand": "Apple",
+    "category": "smartphones",
+    "price": 1199,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&h=400&fit=crop",
+    "badge": "旗艦",
+    "desc": "A18 Pro 晶片｜6.9 吋 Super Retina XDR｜48MP 三鏡頭｜鈦金屬設計",
+    "specs": {
+      "處理器": "Apple A18 Pro",
+      "螢幕": "6.9 吋 Super Retina XDR OLED 120Hz",
+      "相機": "48MP 主鏡頭 + 48MP 超廣角 + 12MP 潛望遠攝",
+      "電池": "4685mAh",
+      "儲存": "256GB / 512GB / 1TB",
+      "材質": "鈦金屬"
+    }
+  },
+  {
+    "id": 10,
+    "name": "iPhone 16",
+    "brand": "Apple",
+    "category": "smartphones",
+    "price": 799,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=600&h=400&fit=crop",
+    "badge": "暢銷",
+    "desc": "A18 晶片｜6.1 吋 Super Retina XDR｜48MP 雙鏡頭｜動作按鈕",
+    "specs": {
+      "處理器": "Apple A18",
+      "螢幕": "6.1 吋 Super Retina XDR OLED",
+      "相機": "48MP 主鏡頭 + 12MP 超廣角",
+      "電池": "3561mAh",
+      "儲存": "128GB / 256GB / 512GB",
+      "材質": "航空級鋁金屬"
+    }
+  },
+  {
+    "id": 11,
+    "name": "iPhone 16 Pro",
+    "brand": "Apple",
+    "category": "smartphones",
+    "price": 999,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600&h=400&fit=crop",
+    "badge": "Pro",
+    "desc": "A18 Pro 晶片｜6.3 吋 Super Retina XDR｜48MP 三鏡頭｜ProMotion 120Hz",
+    "specs": {
+      "處理器": "Apple A18 Pro",
+      "螢幕": "6.3 吋 Super Retina XDR OLED 120Hz",
+      "相機": "48MP 主鏡頭 + 48MP 超廣角 + 12MP 長焦",
+      "電池": "3582mAh",
+      "儲存": "128GB / 256GB / 512GB / 1TB",
+      "材質": "鈦金屬"
+    }
+  },
+  {
+    "id": 12,
+    "name": "ROG Phone 9 Pro",
+    "brand": "ASUS",
+    "category": "smartphones",
+    "price": 1099,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=600&h=400&fit=crop",
+    "badge": "電競手機",
+    "desc": "Snapdragon 8 Elite｜6.78 吋 185Hz AMOLED｜AirTrigger｜5500mAh",
+    "specs": {
+      "處理器": "Qualcomm Snapdragon 8 Elite",
+      "螢幕": "6.78 吋 FHD+ 185Hz Samsung AMOLED",
+      "相機": "50MP 主鏡頭 + 13MP 超廣角 + 5MP 微距",
+      "電池": "5500mAh 65W 快充",
+      "儲存": "256GB / 512GB",
+      "特色": "AirTrigger 超音波肩鍵"
+    }
+  },
+  {
+    "id": 13,
+    "name": "Zenfone 11 Ultra",
+    "brand": "ASUS",
+    "category": "smartphones",
+    "price": 899,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=600&h=400&fit=crop",
+    "badge": "全能旗艦",
+    "desc": "Snapdragon 8 Gen 3｜6.78 吋 144Hz AMOLED｜50MP OIS｜5500mAh",
+    "specs": {
+      "處理器": "Qualcomm Snapdragon 8 Gen 3",
+      "螢幕": "6.78 吋 FHD+ 144Hz LTPO AMOLED",
+      "相機": "50MP 主鏡頭 (OIS) + 13MP 超廣角 + 5MP 微距",
+      "電池": "5500mAh 65W 快充",
+      "儲存": "256GB / 512GB",
+      "特色": "IP68 防水"
+    }
+  },
+  {
+    "id": 14,
+    "name": "iPad Pro M4 13 吋",
+    "brand": "Apple",
+    "category": "tablets",
+    "price": 1299,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&h=400&fit=crop",
+    "badge": "最強平板",
+    "desc": "Apple M4 晶片｜13 吋 Ultra Retina Tandem OLED｜Apple Pencil Pro",
+    "specs": {
+      "處理器": "Apple M4 (10 核心 CPU)",
+      "螢幕": "13 吋 Ultra Retina Tandem OLED 120Hz",
+      "相機": "12MP 廣角 + 10MP 超廣角",
+      "儲存": "256GB / 512GB / 1TB / 2TB",
+      "連接": "Wi-Fi 6E / 5G (可選)",
+      "重量": "579g"
+    }
+  },
+  {
+    "id": 15,
+    "name": "iPad Air M3",
+    "brand": "Apple",
+    "category": "tablets",
+    "price": 799,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1589739900266-43b2843f4c12?w=600&h=400&fit=crop",
+    "badge": "輕巧實用",
+    "desc": "Apple M3 晶片｜11 吋 Liquid Retina｜Apple Pencil (USB-C)｜Wi-Fi 6E",
+    "specs": {
+      "處理器": "Apple M3 (8 核心 CPU)",
+      "螢幕": "11 吋 Liquid Retina IPS",
+      "相機": "12MP 廣角",
+      "儲存": "128GB / 256GB / 512GB",
+      "連接": "Wi-Fi 6E / 5G (可選)",
+      "重量": "462g"
+    }
+  },
+  {
+    "id": 16,
+    "name": "ROG Flow Z13",
+    "brand": "ASUS",
+    "category": "tablets",
+    "price": 1599,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1527698266440-12104e498b76?w=600&h=400&fit=crop",
+    "badge": "電競平板",
+    "desc": "Intel Core Ultra 9｜RTX 5070｜13.4 吋 180Hz Nebula｜可拆卸鍵盤",
+    "specs": {
+      "處理器": "Intel Core Ultra 9 285H",
+      "顯示卡": "NVIDIA GeForce RTX 5070",
+      "記憶體": "32GB LPDDR5X",
+      "儲存": "1TB PCIe 4.0 NVMe SSD",
+      "螢幕": "13.4 吋 QHD+ 180Hz Nebula Display",
+      "特色": "可拆卸鍵盤、XG Mobile 連接"
+    }
+  },
+  {
+    "id": 17,
+    "name": "ROG Strix RTX 5090 OC",
+    "brand": "ASUS",
+    "category": "graphics-cards",
+    "price": 2299,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=600&h=400&fit=crop",
+    "badge": "頂級",
+    "desc": "NVIDIA Blackwell 架構｜32GB GDDR7｜384-bit｜3x 風扇",
+    "specs": {
+      "GPU": "NVIDIA GeForce RTX 5090",
+      "記憶體": "32GB GDDR7 384-bit",
+      "核心時脈": "2017MHz (OC Mode)",
+      "散熱": "三風扇 Axial-tech",
+      "輸出": "3x DP 2.1 + 1x HDMI 2.1",
+      "功耗": "600W (建議 1000W 電源)"
+    }
+  },
+  {
+    "id": 18,
+    "name": "TUF Gaming RTX 5070",
+    "brand": "ASUS",
+    "category": "graphics-cards",
+    "price": 699,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1555617981-dac3880eac6e?w=600&h=400&fit=crop",
+    "badge": "耐用",
+    "desc": "NVIDIA Blackwell｜12GB GDDR7｜192-bit｜軍規等級用料",
+    "specs": {
+      "GPU": "NVIDIA GeForce RTX 5070",
+      "記憶體": "12GB GDDR7 192-bit",
+      "核心時脈": "2512MHz (OC Mode)",
+      "散熱": "雙滾珠軸承風扇",
+      "輸出": "3x DP 2.1 + 1x HDMI 2.1",
+      "功耗": "250W (建議 650W 電源)"
+    }
+  },
+  {
+    "id": 19,
+    "name": "AORUS RTX 5090 Master",
+    "brand": "GIGABYTE",
+    "category": "graphics-cards",
+    "price": 2399,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=600&h=400&fit=crop",
+    "badge": "AORUS",
+    "desc": "NVIDIA Blackwell｜32GB GDDR7｜風之力散熱｜LCD 側板",
+    "specs": {
+      "GPU": "NVIDIA GeForce RTX 5090",
+      "記憶體": "32GB GDDR7 384-bit",
+      "核心時脈": "2040MHz (OC Mode)",
+      "散熱": "WINDFORCE 三風扇",
+      "輸出": "3x DP 2.1 + 1x HDMI 2.1",
+      "特色": "LCD Edge View 側板顯示"
+    }
+  },
+  {
+    "id": 20,
+    "name": "Gaming OC RTX 5070 Ti",
+    "brand": "GIGABYTE",
+    "category": "graphics-cards",
+    "price": 849,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop",
+    "badge": "超頻",
+    "desc": "NVIDIA Blackwell｜16GB GDDR7｜256-bit｜WINDFORCE 散熱",
+    "specs": {
+      "GPU": "NVIDIA GeForce RTX 5070 Ti",
+      "記憶體": "16GB GDDR7 256-bit",
+      "核心時脈": "2617MHz (OC Mode)",
+      "散熱": "WINDFORCE 三風扇",
+      "輸出": "3x DP 2.1 + 1x HDMI 2.1",
+      "功耗": "300W (建議 750W 電源)"
+    }
+  },
+  {
+    "id": 21,
+    "name": "Suprim X RTX 5090",
+    "brand": "MSI",
+    "category": "graphics-cards",
+    "price": 2449,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=600&h=400&fit=crop",
+    "badge": "Suprim",
+    "desc": "NVIDIA Blackwell｜32GB GDDR7｜Tri Frozr 4 散熱｜金屬外殼",
+    "specs": {
+      "GPU": "NVIDIA GeForce RTX 5090",
+      "記憶體": "32GB GDDR7 384-bit",
+      "核心時脈": "2050MHz",
+      "散熱": "Tri Frozr 4 三風扇",
+      "輸出": "3x DP 2.1 + 1x HDMI 2.1",
+      "特色": "精密加工金屬外殼、零轉速模式"
+    }
+  },
+  {
+    "id": 22,
+    "name": "Gaming X Trio RTX 5070",
+    "brand": "MSI",
+    "category": "graphics-cards",
+    "price": 719,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1616422285623-13ff0162193c?w=600&h=400&fit=crop",
+    "badge": "Gaming",
+    "desc": "NVIDIA Blackwell｜12GB GDDR7｜192-bit｜TORX Fan 5.0",
+    "specs": {
+      "GPU": "NVIDIA GeForce RTX 5070",
+      "記憶體": "12GB GDDR7 192-bit",
+      "核心時脈": "2537MHz",
+      "散熱": "TORX Fan 5.0 三風扇",
+      "輸出": "3x DP 2.1 + 1x HDMI 2.1",
+      "功耗": "250W (建議 650W 電源)"
+    }
+  },
+  {
+    "id": 23,
+    "name": "ROG Maximus Z890 Hero",
+    "brand": "ASUS",
+    "category": "motherboards",
+    "price": 729,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1555617981-dac3880eac6e?w=600&h=400&fit=crop",
+    "badge": "ROG",
+    "desc": "Intel Z890｜LGA 1851｜DDR5｜PCIe 5.0｜Wi-Fi 7｜Polymo Lighting II",
+    "specs": {
+      "晶片組": "Intel Z890",
+      "插座": "LGA 1851",
+      "記憶體": "4x DDR5 DIMM (最高 192GB)",
+      "擴充": "1x PCIe 5.0 x16 + 1x PCIe 4.0 x16",
+      "M.2": "5x M.2 (1x PCIe 5.0)",
+      "網路": "Intel Wi-Fi 7 + 2.5G LAN"
+    }
+  },
+  {
+    "id": 24,
+    "name": "TUF Gaming B860M-Plus",
+    "brand": "ASUS",
+    "category": "motherboards",
+    "price": 199,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop",
+    "badge": "TUF",
+    "desc": "Intel B860｜LGA 1851｜DDR5｜PCIe 5.0 M.2｜軍規用料",
+    "specs": {
+      "晶片組": "Intel B860",
+      "插座": "LGA 1851",
+      "記憶體": "4x DDR5 DIMM (最高 192GB)",
+      "擴充": "1x PCIe 5.0 x16",
+      "M.2": "3x M.2 (1x PCIe 5.0)",
+      "網路": "Intel Wi-Fi 7 + 2.5G LAN"
+    }
+  },
+  {
+    "id": 25,
+    "name": "Z890 AORUS Master",
+    "brand": "GIGABYTE",
+    "category": "motherboards",
+    "price": 599,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=600&h=400&fit=crop",
+    "badge": "AORUS",
+    "desc": "Intel Z890｜LGA 1851｜DDR5｜PCIe 5.0｜10G LAN｜Wi-Fi 7",
+    "specs": {
+      "晶片組": "Intel Z890",
+      "插座": "LGA 1851",
+      "記憶體": "4x DDR5 DIMM (最高 192GB)",
+      "擴充": "1x PCIe 5.0 x16 + 1x PCIe 4.0 x16",
+      "M.2": "4x M.2 (1x PCIe 5.0)",
+      "網路": "Qualcomm Wi-Fi 7 + 10G LAN"
+    }
+  },
+  {
+    "id": 26,
+    "name": "B860M AORUS Elite",
+    "brand": "GIGABYTE",
+    "category": "motherboards",
+    "price": 179,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop",
+    "badge": "高性價比",
+    "desc": "Intel B860｜LGA 1851｜DDR5｜PCIe 5.0 M.2｜2.5G LAN",
+    "specs": {
+      "晶片組": "Intel B860",
+      "插座": "LGA 1851",
+      "記憶體": "4x DDR5 DIMM (最高 192GB)",
+      "擴充": "1x PCIe 4.0 x16",
+      "M.2": "3x M.2 (1x PCIe 5.0)",
+      "網路": "Realtek 2.5G LAN"
+    }
+  },
+  {
+    "id": 27,
+    "name": "MEG Z890 ACE",
+    "brand": "MSI",
+    "category": "motherboards",
+    "price": 649,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1555617981-dac3880eac6e?w=600&h=400&fit=crop",
+    "badge": "MEG",
+    "desc": "Intel Z890｜LGA 1851｜DDR5｜PCIe 5.0｜Wi-Fi 7｜5G LAN",
+    "specs": {
+      "晶片組": "Intel Z890",
+      "插座": "LGA 1851",
+      "記憶體": "4x DDR5 DIMM (最高 192GB)",
+      "擴充": "2x PCIe 5.0 x16",
+      "M.2": "4x M.2 (2x PCIe 5.0)",
+      "網路": "Intel Wi-Fi 7 + 5G LAN"
+    }
+  },
+  {
+    "id": 28,
+    "name": "ROG Swift OLED PG32UCDM",
+    "brand": "ASUS",
+    "category": "monitors",
+    "price": 1299,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&h=400&fit=crop",
+    "badge": "頂級",
+    "desc": "32 吋 4K QD-OLED｜240Hz｜0.03ms｜HDR10+｜Dual USB-C",
+    "specs": {
+      "面板": "32 吋 4K (3840x2160) QD-OLED",
+      "更新率": "240Hz",
+      "反應時間": "0.03ms GtG",
+      "HDR": "HDR10+ / DisplayHDR True Black 400",
+      "色彩": "99% DCI-P3 / 99% Adobe RGB",
+      "連接": "HDMI 2.1 x2, DP 1.4, USB-C x2 (96W PD)"
+    }
+  },
+  {
+    "id": 29,
+    "name": "ProArt PA32UCG",
+    "brand": "ASUS",
+    "category": "monitors",
+    "price": 3499,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1585792180666-f7347c490ee2?w=600&h=400&fit=crop",
+    "badge": "專業",
+    "desc": "32 吋 4K Mini LED｜1600nits HDR｜100% DCI-P3｜Calman 認證",
+    "specs": {
+      "面板": "32 吋 4K (3840x2160) IPS Mini LED",
+      "更新率": "120Hz",
+      "亮度": "1600 nits (HDR)",
+      "HDR": "HDR10 / HLG / Dolby Vision",
+      "色彩": "100% DCI-P3 / 99% Adobe RGB / ΔE < 1",
+      "特色": "Calman Verified、硬件校準"
+    }
+  },
+  {
+    "id": 30,
+    "name": "M32U",
+    "brand": "GIGABYTE",
+    "category": "monitors",
+    "price": 599,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&h=400&fit=crop",
+    "badge": "4K",
+    "desc": "32 吋 4K IPS｜144Hz｜SS IPS｜1ms｜HDMI 2.1",
+    "specs": {
+      "面板": "32 吋 4K (3840x2160) Super Speed IPS",
+      "更新率": "144Hz",
+      "反應時間": "1ms GtG",
+      "HDR": "VESA DisplayHDR 400",
+      "色彩": "95% DCI-P3",
+      "連接": "HDMI 2.1 x2, DP 1.4, USB-C (KVM)"
+    }
+  },
+  {
+    "id": 31,
+    "name": "AORUS FO32U2",
+    "brand": "GIGABYTE",
+    "category": "monitors",
+    "price": 1099,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1585792180666-f7347c490ee2?w=600&h=400&fit=crop",
+    "badge": "QD-OLED",
+    "desc": "32 吋 4K QD-OLED｜240Hz｜0.03ms｜HDR10+｜99% DCI-P3",
+    "specs": {
+      "面板": "32 吋 4K (3840x2160) QD-OLED",
+      "更新率": "240Hz",
+      "反應時間": "0.03ms GtG",
+      "HDR": "HDR10+ / DisplayHDR True Black 400",
+      "色彩": "99% DCI-P3",
+      "連接": "HDMI 2.1 x2, DP 1.4, USB-C"
+    }
+  },
+  {
+    "id": 32,
+    "name": "MPG 321URX QD-OLED",
+    "brand": "MSI",
+    "category": "monitors",
+    "price": 1199,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&h=400&fit=crop",
+    "badge": "MPG",
+    "desc": "32 吋 4K QD-OLED｜240Hz｜0.03ms｜Quantum Dot｜Gaming OSD",
+    "specs": {
+      "面板": "32 吋 4K (3840x2160) QD-OLED",
+      "更新率": "240Hz",
+      "反應時間": "0.03ms GtG",
+      "HDR": "VESA DisplayHDR True Black 400",
+      "色彩": "99% DCI-P3 / 97% Adobe RGB",
+      "特色": "MSI Gaming OSD、OLED Care 2.0"
+    }
+  },
+  {
+    "id": 33,
+    "name": "AirPods Pro 3",
+    "brand": "Apple",
+    "category": "headphones",
+    "price": 249,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?w=600&h=400&fit=crop",
+    "badge": "新世代",
+    "desc": "H3 晶片｜心率監測｜紅外線手勢控制｜IP57｜8 小時續航",
+    "specs": {
+      "晶片": "Apple H3",
+      "降噪": "業界最佳主動降噪",
+      "續航": "8 小時 (單次) / 30 小時 (充電盒)",
+      "防水": "IP57 防塵防水",
+      "特色": "心率感測、手勢控制、即時翻譯",
+      "充電": "USB-C / MagSafe / Qi2"
+    }
+  },
+  {
+    "id": 34,
+    "name": "AirPods Max 2",
+    "brand": "Apple",
+    "category": "headphones",
+    "price": 549,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=400&fit=crop",
+    "badge": "奢華",
+    "desc": "H2 晶片｜自適應降噪｜空間音訊｜USB-C｜20 小時續航",
+    "specs": {
+      "晶片": "Apple H2",
+      "降噪": "自適應主動降噪 + 通透模式",
+      "續航": "20 小時",
+      "特色": "個人化空間音訊、動態頭部追蹤",
+      "充電": "USB-C",
+      "重量": "384g"
+    }
+  },
+  {
+    "id": 35,
+    "name": "ROG Delta III",
+    "brand": "ASUS",
+    "category": "headphones",
+    "price": 199,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=600&h=400&fit=crop",
+    "badge": "電競",
+    "desc": "50mm 驅動單體｜AI 降噪麥克風｜2.4GHz + 藍牙｜RGB",
+    "specs": {
+      "驅動單體": "50mm ASUS Essence",
+      "連接": "2.4GHz 無線 + 藍牙 5.3 + USB-C 有線",
+      "續航": "50 小時",
+      "麥克風": "AI 降噪麥克風",
+      "特色": "ROG Armoury Crate、RGB 燈效",
+      "重量": "318g"
+    }
+  },
+  {
+    "id": 36,
+    "name": "ROG Strix Go II",
+    "brand": "ASUS",
+    "category": "headphones",
+    "price": 149,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=600&h=400&fit=crop",
+    "badge": "無線",
+    "desc": "40mm 驅動單體｜2.4GHz 無線｜可拆卸麥克風｜45 小時續航",
+    "specs": {
+      "驅動單體": "40mm ASUS Essence",
+      "連接": "2.4GHz 無線 + 藍牙 5.0 + 3.5mm",
+      "續航": "45 小時",
+      "麥克風": "可拆卸 AI 降噪麥克風",
+      "特色": "輕量化設計、摺疊便攜",
+      "重量": "290g"
+    }
+  },
+  {
+    "id": 37,
+    "name": "Immerse GH60",
+    "brand": "MSI",
+    "category": "headphones",
+    "price": 129,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1599669454699-248893623440?w=600&h=400&fit=crop",
+    "badge": "電競",
+    "desc": "40mm 驅動單體｜7.1 虛擬環繞｜USB + 3.5mm｜RGB 燈效",
+    "specs": {
+      "驅動單體": "40mm hi-res",
+      "連接": "USB + 3.5mm",
+      "環繞音效": "7.1 虛擬環繞聲",
+      "麥克風": "可拆卸麥克風",
+      "特色": "RGB Mystic Light、MSI Center",
+      "重量": "320g"
+    }
+  },
+  {
+    "id": 38,
+    "name": "Apple Watch Ultra 3",
+    "brand": "Apple",
+    "category": "smartwatches",
+    "price": 799,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=600&h=400&fit=crop",
+    "badge": "Ultra",
+    "desc": "S11 晶片｜49mm 鈦金屬｜5G｜血壓監測｜衛星 SOS｜72 小時續航",
+    "specs": {
+      "晶片": "Apple S11",
+      "錶殼": "49mm 航空級鈦金屬",
+      "螢幕": "3000 nits 常亮 Retina",
+      "連接": "5G + Wi-Fi 6E + 藍牙 5.3 + GPS + L5",
+      "健康": "血壓、心電圖、血氧、睡眠呼吸偵測",
+      "續航": "72 小時 (低耗電模式)"
+    }
+  },
+  {
+    "id": 39,
+    "name": "Apple Watch Series 11",
+    "brand": "Apple",
+    "category": "smartwatches",
+    "price": 399,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=600&h=400&fit=crop",
+    "badge": "暢銷",
+    "desc": "S11 晶片｜血壓監測｜血氧｜心電圖｜Always-On Retina",
+    "specs": {
+      "晶片": "Apple S11",
+      "錶殼": "41mm / 45mm 鋁金屬/不鏽鋼",
+      "螢幕": "Always-On Retina LTPO OLED",
+      "連接": "Wi-Fi 6E + 藍牙 5.3 + GPS + L5",
+      "健康": "血壓、心電圖、血氧、體溫",
+      "續航": "18 小時 (36 小時低耗電)"
+    }
+  },
+  {
+    "id": 40,
+    "name": "Apple Watch SE 3",
+    "brand": "Apple",
+    "category": "smartwatches",
+    "price": 249,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=600&h=400&fit=crop",
+    "badge": "入門",
+    "desc": "S10 晶片｜車禍偵測｜跌倒偵測｜watchOS 11｜18 小時續航",
+    "specs": {
+      "晶片": "Apple S10 (沿用)",
+      "錶殼": "40mm / 44mm 再生鋁金屬",
+      "螢幕": "Retina LTPO OLED",
+      "連接": "Wi-Fi + 藍牙 5.3 + GPS",
+      "安全": "車禍偵測、跌倒偵測、緊急 SOS",
+      "續航": "18 小時"
+    }
+  },
+  {
+    "id": 41,
+    "name": "ROG Strix Scope II 96",
+    "brand": "ASUS",
+    "category": "keyboards-mice",
+    "price": 179,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=600&h=400&fit=crop",
+    "badge": "電競",
+    "desc": "96% 配列｜ROG NX Snow 軸｜熱插拔｜PBT 鍵帽｜RGB",
+    "specs": {
+      "配列": "96% (約 96 鍵)",
+      "軸體": "ROG NX Snow (線性/熱插拔)",
+      "鍵帽": "PBT 雙色注塑",
+      "連接": "USB-C 有線",
+      "特色": "Per-key RGB、多層消音墊",
+      "N-Key": "全鍵無衝突"
+    }
+  },
+  {
+    "id": 42,
+    "name": "ROG Gladius III",
+    "brand": "ASUS",
+    "category": "keyboards-mice",
+    "price": 89,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1527814050087-3793815479db?w=600&h=400&fit=crop",
+    "badge": "電競滑鼠",
+    "desc": "36K DPI｜ROG AimPoint 感應器｜熱插拔微動｜三模連接｜74g",
+    "specs": {
+      "DPI": "36,000 DPI ROG AimPoint",
+      "連接": "2.4GHz + 藍牙 5.1 + USB-C 有線",
+      "重量": "74g (無打孔設計)",
+      "微動": "ROG 熱插拔 (含額外 2 組)",
+      "續航": "110 小時 (2.4GHz)",
+      "特色": "SpeedNova 無線技術"
+    }
+  },
+  {
+    "id": 43,
+    "name": "Vigor GK80",
+    "brand": "MSI",
+    "category": "keyboards-mice",
+    "price": 159,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&h=400&fit=crop",
+    "badge": "MSI",
+    "desc": "75% 配列｜機械軸體｜熱插拔｜RGB｜鋁合金面板",
+    "specs": {
+      "配列": "75% (約 84 鍵)",
+      "軸體": "MSI 自研軸 (熱插拔)",
+      "鍵帽": "PBT 雙色注塑",
+      "連接": "USB-C 有線 + 藍牙",
+      "特色": "per-key RGB、鋁合金上蓋",
+      "N-Key": "全鍵無衝突"
+    }
+  },
+  {
+    "id": 44,
+    "name": "Clutch GM41",
+    "brand": "MSI",
+    "category": "keyboards-mice",
+    "price": 69,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1527814050087-3793815479db?w=600&h=400&fit=crop",
+    "badge": "輕量",
+    "desc": "16K DPI｜PMW3389 感應器｜2.4GHz 無線｜65g｜RGB",
+    "specs": {
+      "DPI": "16,000 DPI PMW3389",
+      "連接": "2.4GHz 無線 + USB-C 有線",
+      "重量": "65g",
+      "續航": "80 小時",
+      "特色": "OLED 顯示螢幕、RGB Mystic Light",
+      "微動": "歐姆龍 5000 萬次"
+    }
+  },
+  {
+    "id": 45,
+    "name": "AORUS K9",
+    "brand": "GIGABYTE",
+    "category": "keyboards-mice",
+    "price": 139,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=600&h=400&fit=crop",
+    "badge": "AORUS",
+    "desc": "全尺寸｜光學軸體｜熱插拔｜PBT 鍵帽｜多模連接",
+    "specs": {
+      "配列": "全尺寸 (104 鍵)",
+      "軸體": "Gateron 光學軸 (熱插拔)",
+      "鍵帽": "PBT 雙色注塑",
+      "連接": "2.4GHz + 藍牙 5.0 + USB-C",
+      "特色": "per-key RGB、多層消音",
+      "續航": "200 小時 (無燈效)"
+    }
+  },
+  {
+    "id": 46,
+    "name": "ROG Rapture GT-BE19000",
+    "brand": "ASUS",
+    "category": "networking",
+    "price": 599,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1606904825846-647eb07f5be2?w=600&h=400&fit=crop",
+    "badge": "電競路由",
+    "desc": "WiFi 7 三頻｜19Gbps｜AiMesh｜2.5G 埠｜Game Boost｜RGB",
+    "specs": {
+      "標準": "WiFi 7 (802.11be) 三頻",
+      "速度": "19000 Mbps (BE19000)",
+      "連接埠": "1x 10G + 1x 2.5G + 4x 1G LAN",
+      "特色": "AiMesh、Game Boost、OpenNAT",
+      "安全": "AiProtection Pro (Trend Micro)",
+      "處理器": "2.6GHz 四核心"
+    }
+  },
+  {
+    "id": 47,
+    "name": "ZenWiFi Pro ET12",
+    "brand": "ASUS",
+    "category": "networking",
+    "price": 449,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop",
+    "badge": "Mesh",
+    "desc": "WiFi 7 Mesh｜三頻 AXE11000｜覆蓋 270㎡｜2.5G 埠",
+    "specs": {
+      "標準": "WiFi 7 (802.11be) 三頻",
+      "速度": "11000 Mbps",
+      "覆蓋": "270㎡ (單組 2 台)",
+      "連接埠": "1x 10G + 1x 2.5G + 3x 1G LAN",
+      "特色": "AiMesh、家長監護",
+      "處理器": "2.0GHz 四核心"
+    }
+  },
+  {
+    "id": 48,
+    "name": "RT-BE86U",
+    "brand": "ASUS",
+    "category": "networking",
+    "price": 299,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1606904825846-647eb07f5be2?w=600&h=400&fit=crop",
+    "badge": "主流",
+    "desc": "WiFi 7 雙頻｜BE5700｜2.5G 埠｜AiMesh｜家長監護",
+    "specs": {
+      "標準": "WiFi 7 (802.11be) 雙頻",
+      "速度": "5700 Mbps",
+      "覆蓋": "140㎡",
+      "連接埠": "1x 2.5G + 4x 1G LAN",
+      "特色": "AiMesh、家長監護、VPN",
+      "處理器": "1.7GHz 雙核心"
+    }
+  },
+  {
+    "id": 49,
+    "name": "ROG Strix RTX 5080 OC",
+    "brand": "ASUS",
+    "category": "graphics-cards",
+    "price": 1199,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=600&h=400&fit=crop",
+    "badge": "高端",
+    "desc": "NVIDIA Blackwell｜16GB GDDR7｜256-bit｜三風扇散熱",
+    "specs": {
+      "GPU": "NVIDIA GeForce RTX 5080",
+      "記憶體": "16GB GDDR7 256-bit",
+      "核心時脈": "2670MHz (OC Mode)",
+      "散熱": "三風扇 Axial-tech",
+      "輸出": "3x DP 2.1 + 1x HDMI 2.1",
+      "功耗": "360W (建議 850W 電源)"
+    }
+  },
+  {
+    "id": 50,
+    "name": "Cyborg 15",
+    "brand": "MSI",
+    "category": "laptops",
+    "price": 999,
+    "currency": "USD",
+    "image": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=600&h=400&fit=crop",
+    "badge": "入門電競",
+    "desc": "Intel Core i7-14650HX｜RTX 5060｜15.6 吋 144Hz IPS｜16GB DDR5｜512GB SSD",
+    "specs": {
+      "處理器": "Intel Core i7-14650HX",
+      "顯示卡": "NVIDIA GeForce RTX 5060",
+      "記憶體": "16GB DDR5-4800",
+      "儲存": "512GB PCIe 4.0 NVMe SSD",
+      "螢幕": "15.6 吋 FHD IPS 144Hz",
+      "重量": "1.98kg"
+    }
+  }
+]
